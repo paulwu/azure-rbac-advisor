@@ -48,13 +48,49 @@ The **Azure RBAC Advisor** is a GitHub Copilot custom agent defined in `.github/
 
 ### How to Activate
 
-**In VS Code Copilot Chat:**
+#### GitHub Copilot CLI (Terminal)
+
+1. **Install** the Copilot CLI (choose one):
+   ```bash
+   # macOS / Linux
+   curl -fsSL https://gh.io/copilot-install | bash
+   # or via Homebrew
+   brew install copilot-cli
+
+   # Windows (WinGet)
+   winget install GitHub.Copilot
+
+   # npm (all platforms)
+   npm install -g @github/copilot
+   ```
+
+2. **Navigate** to this repository and **launch** the CLI:
+   ```bash
+   cd azure-rbac-agent-repo
+   copilot
+   ```
+
+3. **Select the agent** using the `/agent` slash command:
+   ```
+   /agent
+   ```
+   Browse the list and select **Azure RBAC Advisor**.
+
+4. **Ask your question.** The agent reads the `resources/` library, answers with exact role names, logs your prompt to `log/`, and saves the answer to `answer/` automatically.
+
+5. **Switch modes** (optional) — press `Shift+Tab` to cycle to **Autopilot** mode for longer multi-step RBAC analysis without manual confirmation at each step.
+
+> **Tip:** Run `copilot --experimental` to enable Autopilot mode, which lets the agent work through complex cross-resource questions uninterrupted.
+
+#### VS Code Copilot Chat
+
 1. Open GitHub Copilot Chat (`Ctrl+Alt+I` / `Cmd+Alt+I`)
 2. Click the agents dropdown (the `@` or Copilot icon at the bottom of the chat)
 3. Select **Azure RBAC Advisor**
 4. Ask your question
 
-**In GitHub.com Copilot:**
+#### GitHub.com Copilot
+
 1. Go to [github.com/copilot/agents](https://github.com/copilot/agents)
 2. Select this repository and choose **Azure RBAC Advisor** from the agent list
 
@@ -104,6 +140,50 @@ Give me a full RBAC summary for a Data Landing Zone covering Data Factory, Synap
 ```
 What are the least-privileged roles for AKS operations? Save the answer to rbac-aks.md
 ```
+
+---
+
+### Full Workload Deployment Example
+
+The following prompt asks the agent for a complete RBAC plan covering every layer of a typical three-tier web application workload deployed into a Workload Landing Zone. Run this from the CLI with the agent selected:
+
+```
+I'm deploying a three-tier web application into a Workload Landing Zone on Azure.
+The workload uses the following resources:
+
+  - Azure Virtual Network (spoke) with subnets and NSGs
+  - Azure App Service (frontend + API tiers)
+  - Azure SQL Database (backend data store)
+  - Azure Storage Account (Blob for media uploads, Queue for async jobs)
+  - Azure Key Vault (secrets and certificates for the app)
+  - Azure Container Registry (container images for the API)
+  - Azure Load Balancer and Application Gateway (traffic routing)
+
+I need RBAC role assignments for FOUR principals:
+
+  1. DevOps CI/CD pipeline (Service Principal) — needs to deploy and configure
+     all resources above, push images to ACR, and manage App Service deployments.
+
+  2. Application Managed Identity — needs runtime access to read secrets from
+     Key Vault, read/write blobs in Storage, enqueue/dequeue Storage Queue
+     messages, and query the SQL Database.
+
+  3. Developer (individual user) — needs read-only access to view resource
+     configurations and read application logs, but must NOT be able to modify
+     production resources or access secret values.
+
+  4. Database Administrator — needs full control of Azure SQL Database
+     (server + databases), but no access to any other resource.
+
+For each principal, list:
+  - The least-privileged built-in role for each resource
+  - Whether assignment should be at resource, resource group, or subscription scope
+  - Any management plane vs. data plane role distinctions to be aware of
+
+Save the full output to rbac-workload-deployment.md
+```
+
+This produces a structured RBAC assignment matrix saved to `rbac-workload-deployment.md`, with sources cited for each role from the `resources/workload-landing-zone/` reference files. The prompt is also automatically logged to `log/` and the answer saved to `answer/`.
 
 ### Guided Scoping Flow
 
