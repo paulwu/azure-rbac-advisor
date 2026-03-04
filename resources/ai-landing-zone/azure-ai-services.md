@@ -88,5 +88,7 @@ Azure AI Services (formerly Cognitive Services) is a family of pre-built AI serv
 ## Related Resources
 
 - [Azure OpenAI](./azure-openai.md) — LLM models (separate from AI Services)
+- [Azure AI Document Intelligence](./azure-ai-document-intelligence.md) — Document extraction service (FormRecognizer kind)
+- [Azure AI Content Understanding](./azure-ai-content-understanding.md) — Multimodal content analysis (preview)
 - [Azure AI Search](./azure-ai-search.md) — Often integrated with Document Intelligence and language models
 - [Azure Machine Learning](./azure-machine-learning.md) — Custom model training and deployment

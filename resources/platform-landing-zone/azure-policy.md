@@ -64,3 +64,4 @@ Azure Policy enforces organizational standards and assesses compliance at scale.
 
 - [Management Groups](./management-groups.md) — Governance hierarchy where policies are applied
 - [Microsoft Defender for Cloud](./microsoft-defender-for-cloud.md) — Uses Policy under the hood for security recommendations
+- [Managed Identity](./managed-identity.md) — Remediation identities for DeployIfNotExists and Modify policies

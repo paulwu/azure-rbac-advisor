@@ -86,6 +86,8 @@ Azure OpenAI Service provides access to OpenAI's powerful language models (GPT-4
 ## Related Resources
 
 - [Azure AI Search](./azure-ai-search.md) — RAG (Retrieval Augmented Generation) with OpenAI
+- [Grounding with Bing Search](./grounding-with-bing-search.md) — Web grounding for real-time information in LLM responses
+- [Azure AI Document Intelligence](./azure-ai-document-intelligence.md) — Document extraction for RAG pipelines
 - [Azure Machine Learning](./azure-machine-learning.md) — Fine-tuning orchestration
 - [Private DNS Zones](../platform-landing-zone/private-dns-zones.md) — `privatelink.openai.azure.com`
 - [Azure Key Vault](../workload-landing-zone/azure-key-vault.md) — Storing OpenAI endpoint URLs and fallback keys

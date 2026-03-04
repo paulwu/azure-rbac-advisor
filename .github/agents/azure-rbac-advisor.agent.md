@@ -148,11 +148,11 @@ When a user explicitly requests output saved to a **custom filename**:
 
 ## Multi-Resource Table Format
 
-When the user asks about roles for **more than one resource**, always present results in this exact 3-column table format:
+When the user asks about roles for **more than one resource**, always present results in this exact 4-column table format:
 
-| Resource | Least-Privileged Role to Create | Cross-Resource Access Required |
-|----------|----------------------------------|-------------------------------|
-| \<Resource Name\> | \<Least-privileged built-in role\> | \<Dependency Resource\>: \<Role needed\> |
+| Resource | Least-Privileged Role to Create | Dependency Resource | Role to Access Dependency |
+|----------|----------------------------------|---------------------|--------------------------|
+| \<Resource Name\> | \<Least-privileged built-in role\> | \<Dependency Resource\> | \<Role needed\> |
 
 ### Column definitions
 
@@ -162,22 +162,39 @@ The Azure resource name (e.g., "Azure AI Foundry", "Azure Key Vault").
 **Column 2 — Least-Privileged Role to Create**
 The single least-privileged built-in role required to provision/create that resource (management plane). Use only roles verbatim from the `resources/` files.
 
-**Column 3 — Cross-Resource Access Required**
-List every **other** Azure resource this resource must access at runtime, and the minimum role needed for each access pattern. Format each dependency on its own line within the cell:
-```
-<Dependency Resource>: <Role> (<access type, e.g., read keys / write blobs>)
-```
-If a dependency requires **different roles for read vs. write**, list both:
-```
-Azure Key Vault: Key Vault Secrets User (read secrets)
-Azure Key Vault: Key Vault Secrets Officer (write/update secrets)
-```
-If the resource has **no cross-resource dependencies**, write `—` (em dash).
+**Column 3 — Dependency Resource**
+The name of another Azure resource this resource must access at runtime. If the resource has **no cross-resource dependencies**, write `—` (em dash) and leave Column 4 blank.
 
-### Rules for the multi-resource table
-- Read ALL relevant resource files before populating the table — do not guess dependency roles.
-- If a dependency resource file is **not in the `resources/` folder**, note it as: `<Resource>: see [Azure docs](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles)`
-- After the table, always add a **Notes** section explaining any non-obvious entries.
+When a resource has **more than one common dependency**, list each dependency as its own row, repeating the values in Columns 1 and 2.
+
+**Column 4 — Role to Access Dependency**
+The minimum built-in role needed to access the dependency resource listed in Column 3. Include the access type in parentheses (e.g., `Key Vault Secrets User (read secrets)`).
+
+If a dependency requires **different roles for read vs. write**, list each as its own row:
+```
+Row 1: Azure Key Vault | Key Vault Secrets User (read secrets)
+Row 2: Azure Key Vault | Key Vault Secrets Officer (write/update secrets)
+```
+
+### Table 2 — Dependency Resource Provisioning Roles
+
+Immediately after Table 1, always render a second 2-column table that lists every **unique** dependency resource that appeared in Table 1 (Column 3), de-duplicated, with the role needed to **create and manage** that dependency resource:
+
+| Dependency Resource | Least-Privileged Role to Create & Manage |
+|---------------------|------------------------------------------|
+| \<Dependency Resource name\> | \<Least-privileged built-in role to provision and manage it\> |
+
+**Column 1 — Dependency Resource**
+Each unique resource listed in Column 3 of Table 1, listed once. Omit the `—` (no-dependency) rows.
+
+**Column 2 — Least-Privileged Role to Create & Manage**
+The minimum built-in role the workload author needs to provision and manage that dependency resource (management plane). Use only roles verbatim from the `resources/` files. If the resource file is not in the `resources/` folder, write: `see [Azure docs](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles)`.
+
+### Rules for the multi-resource tables
+- Read ALL relevant resource files before populating either table — do not guess roles.
+- Table 2 must only contain resources that appear in Table 1, Column 3 — no additions.
+- De-duplicate Table 2 rows — each dependency resource appears exactly once regardless of how many times it appears in Table 1.
+- After both tables, always add a **Notes** section explaining any non-obvious entries.
 - Always end with the standard source citation listing all files consulted.
 
 ---

@@ -99,5 +99,8 @@ AI Landing Zone Subscription
 
 - [Azure OpenAI](./azure-openai.md) — LLM model serving connected to AI Foundry
 - [Azure AI Search](./azure-ai-search.md) — RAG knowledge base connected to AI Foundry
+- [Grounding with Bing Search](./grounding-with-bing-search.md) — Web grounding tool for AI Foundry agents
+- [Azure AI Document Intelligence](./azure-ai-document-intelligence.md) — Document extraction for AI Foundry workflows
+- [Azure AI Content Understanding](./azure-ai-content-understanding.md) — Multimodal content analysis (preview)
 - [Azure Machine Learning](./azure-machine-learning.md) — Underlying platform; AI Foundry Hub is an AML workspace kind
 - [Azure Key Vault](../workload-landing-zone/azure-key-vault.md) — Storing connection secrets for the Hub

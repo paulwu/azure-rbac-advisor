@@ -95,5 +95,7 @@ Azure AI Search is a fully managed search-as-a-service platform providing full-t
 
 - [Azure OpenAI](./azure-openai.md) — RAG architecture: OpenAI + AI Search
 - [Azure AI Services](./azure-ai-services.md) — Integrated vectorization using embedding models
+- [Azure AI Document Intelligence](./azure-ai-document-intelligence.md) — Extract structured data from documents for indexing
+- [Azure AI Content Understanding](./azure-ai-content-understanding.md) — Multimodal content extraction for indexing
 - [Azure Data Lake Storage Gen2](../data-landing-zone/azure-data-lake-storage-gen2.md) — Document source for indexers
 - [Private DNS Zones](../platform-landing-zone/private-dns-zones.md) — `privatelink.search.windows.net`
