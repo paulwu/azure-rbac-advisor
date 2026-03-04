@@ -82,6 +82,9 @@ Azure App Service is a fully managed PaaS for hosting web applications, REST API
 
 ## Related Resources
 
+- [App Service Plan](./app-service-plan.md) — Underlying compute for Web Apps
+- [Azure Functions](./azure-functions.md) — Serverless compute on the same `Microsoft.Web` platform
+- [Azure Logic Apps](./azure-logic-apps.md) — Standard Logic Apps on the same `Microsoft.Web` platform
 - [Azure Key Vault](./azure-key-vault.md) — Key Vault References for app settings
 - [Spoke Virtual Network](./spoke-virtual-network.md) — VNet Integration and Private Endpoints
 - [Azure SQL Database](./azure-sql-database.md) — Common backend database

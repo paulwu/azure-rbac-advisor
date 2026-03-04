@@ -91,3 +91,5 @@ Azure Key Vault provides centralized secrets management, key management, and cer
 
 - [Hub Virtual Network](./hub-virtual-network.md) — Private endpoint connectivity
 - [Private DNS Zones](./private-dns-zones.md) — `privatelink.vaultcore.azure.net` for private Key Vault access
+- [Managed Identity](./managed-identity.md) — Preferred authentication method for services accessing Key Vault
+- [API Management](./api-management.md) — Named Values and TLS certificates sourced from Key Vault

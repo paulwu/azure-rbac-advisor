@@ -110,6 +110,8 @@ Azure Applied AI Services are higher-level, scenario-specific AI services built 
 ## Related Resources
 
 - [Azure AI Services](./azure-ai-services.md) — Underlying AI building blocks
+- [Azure AI Document Intelligence](./azure-ai-document-intelligence.md) — Dedicated document extraction resource (detailed reference)
+- [Azure AI Content Understanding](./azure-ai-content-understanding.md) — Multimodal content analysis (preview)
 - [Azure OpenAI](./azure-openai.md) — LLM-based document understanding
 - [Azure AI Search](./azure-ai-search.md) — Indexing and searching processed document content
 - [Azure Storage Account](../workload-landing-zone/azure-storage-account.md) — Document Intelligence training data storage

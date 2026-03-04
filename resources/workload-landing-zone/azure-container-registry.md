@@ -93,5 +93,6 @@ Azure Container Registry is a managed, private Docker-compatible container regis
 ## Related Resources
 
 - [Azure Kubernetes Service](./azure-kubernetes-service.md) — Primary consumer of ACR images
+- [Azure Container Apps](./azure-container-apps.md) — Container Apps pulling images from ACR
 - [Private DNS Zones](../platform-landing-zone/private-dns-zones.md) — `privatelink.azurecr.io`
 - [Spoke Virtual Network](./spoke-virtual-network.md) — Private endpoint connectivity

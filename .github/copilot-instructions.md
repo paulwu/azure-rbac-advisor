@@ -217,6 +217,31 @@ Use relative paths. Cross-landing-zone links must use `../landing-zone-dir/file.
 
 ---
 
+## Azure RBAC Advisor Custom Agent
+
+A Copilot custom agent is defined in `.github/agents/azure-rbac-advisor.agent.md`. It is scoped exclusively to answering Azure RBAC questions using the `resources/` library as its knowledge base.
+
+Key constraints that apply to the agent (and should not be violated when working in this repo):
+
+- **Read `resources/` files; never modify them.** The agent reads resource files as a reference library — it must not write to or edit any file under `resources/`.
+- **Write output only to `log/` and `answer/`.** These two directories are gitignored runtime output folders. They do not exist in the repo by default; run `mkdir -p log answer` (or `bash setup.sh` / `make setup`) on first use.
+- **Never invent role names.** The agent cites roles verbatim from resource files; Copilot authoring assistance must do the same.
+
+When a user invokes the agent (via `/agent` in the CLI or the agent dropdown in VS Code Copilot Chat), it logs every prompt to `log/copilot-log_YYMMDD_HH:MM:SS PST.md` and saves answers to `answer/answer_YYMMDD_HH:MM:SS PST.md`. If these directories are missing, the agent will fail to write — create them with the setup command above.
+
+---
+
+## Cross-Landing-Zone Exceptions
+
+`azure-key-vault.md` intentionally exists in **two** landing zone directories:
+
+- `resources/platform-landing-zone/azure-key-vault.md` — Key Vault owned by the platform team (shared secrets, certificates, CMKs for platform services)
+- `resources/workload-landing-zone/azure-key-vault.md` — Key Vault owned by an application team (app secrets and certificates)
+
+When adding a `Related Resources` link to Key Vault, link to the file in the **same landing zone** as the resource being authored. Cross-zone links to Key Vault must use the `../` relative path prefix.
+
+---
+
 ## What Copilot Should NOT Do
 
 - ❌ Invent role names not present in the Azure built-in roles list.

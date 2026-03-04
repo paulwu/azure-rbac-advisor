@@ -82,3 +82,5 @@ Azure Automation provides process automation (runbooks), configuration managemen
 
 - [Log Analytics Workspace](./log-analytics-workspace.md) — Linked for Update Management and Change Tracking
 - [Azure Monitor](./azure-monitor.md) — Action Groups can trigger runbooks via webhooks
+- [Managed Identity](./managed-identity.md) — Preferred authentication for runbooks replacing Run As Accounts
+- [Recovery Services Vault](./recovery-services-vault.md) — Pre/post backup scripts via runbooks
