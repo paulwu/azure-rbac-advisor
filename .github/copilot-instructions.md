@@ -57,6 +57,16 @@ All RBAC role names, permission actions, and role descriptions **must** be drawn
 
 ---
 
+## Canonical sources and grounding
+
+- Treat live content under `https://learn.microsoft.com/azure/role-based-access-control/built-in-roles` as the highest-authority source.
+- Use `notes/Azure-RBAC-Built-in-Roles.md` as the cached baseline when live fetches are unavailable.
+- Use other files in `notes/` as secondary research only.
+- Treat `docs/` as generated output, not as the factual source of truth.
+- If a source disagrees with Microsoft Learn, call out the contradiction explicitly, prefer Microsoft Learn, and include the URL for manual verification.
+
+---
+
 ## Directory Structure
 
 ```
