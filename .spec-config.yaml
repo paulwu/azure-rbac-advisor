@@ -1,19 +1,80 @@
 spec_repo: paulwu/curated-advisor-specs
-spec_version: "1.0.0"
+spec_version: "2.0.0"
 imported_at: "2026-03-29T08:31:14Z"
+
 imports:
-  - grounding-rules
-  - research-agent
+  # --- Tier 1: Core Specs ---
+  - id: grounding-rules
+    drift_mode: behavioral
+  - id: research-conventions
+    drift_mode: structural
+  - id: readme-structure
+    drift_mode: structural
+  - id: response-capture
+    drift_mode: structural
+
+  # --- Tier 2: Role Specs ---
+  - id: research-agent
+    drift_mode: structural
+  - id: author-agent
+    drift_mode: structural
+  - id: advisor-agent
+    drift_mode: structural
+
 variables:
+  # --- grounding-rules ---
   PRIMARY_SOURCE_URL: "https://learn.microsoft.com/azure/role-based-access-control/built-in-roles"
   PRIMARY_SOURCE_NAME: "Microsoft Learn"
   CACHED_BASELINE_FILE: "notes/Azure-RBAC-Built-in-Roles.md"
   SECONDARY_NOTE_FILES: ""
-  NOTES_FOLDER: "notes"
+  KNOWLEDGE_FOLDER: "notes"
   DOCS_FOLDER: "docs"
+
+  # --- research-conventions ---
+  RESEARCH_CURATOR_NAME: "Knowledge Author"
+
+  # --- response-capture ---
+  RESPONSE_FOLDER: "answer"
+  RESPONSE_TIMEZONE: "America/Los_Angeles"
+  RESPONSE_FILENAME_PREFIX: "answer"
+
+  # --- research-agent ---
   RESEARCH_AGENT_NAME: "Azure RBAC Researcher"
   RESEARCH_AGENT_DESCRIPTION: "Research agent grounded on official Microsoft Learn Azure RBAC documentation."
-  RESPONSE_CAPTURE_FOLDER: "answer"
-  RESPONSE_TIMEZONE: "America/Los_Angeles"
-  SITE_INDEX_URLS: ""
   SCRIPTS_FOLDER: "scripts"
+
+  # --- author-agent ---
+  AUTHOR_AGENT_NAME: "Azure RBAC Knowledge Author"
+  AUTHOR_AGENT_DESCRIPTION: "Creates and validates Azure RBAC reference files following the mandatory section structure."
+  CONTENT_TEMPLATE_PATH: ""
+
+  # --- advisor-agent ---
+  ADVISOR_AGENT_NAME: "Azure RBAC Advisor"
+  ADVISOR_AGENT_DESCRIPTION: "Answers Azure RBAC least-privilege questions grounded on the resources/ reference library."
+  KNOWLEDGE_BASE_FOLDER: "resources"
+  ADVISOR_SCOPE: "Azure RBAC least-privilege permissions"
+  ANSWER_FOLDER: "answer"
+  LOG_FOLDER: "log"
+  CORRECTIONS_FILE: ".advisor-rules/corrections.md"
+
+  # --- readme-structure ---
+  COPILOT_PRIMER_PATH: ""
+
+  # --- project-level ---
+  PROJECT_NAME: "Azure RBAC Advisor"
+  PROJECT_DESCRIPTION: "Azure RBAC least-privilege reference for Azure Landing Zone archetypes"
+
+overrides:
+  # The copilot-instructions.md has extensive RBAC-specific content (mandatory file
+  # structure, RBAC content rules, style rules, custom agent docs) that goes well
+  # beyond the spec templates. These are domain-specific additions, not drift.
+  - spec: grounding-rules
+    file: .github/copilot-instructions.md
+    section: "Authoritative Sources"
+    reason: "RBAC-specific multi-source authoritative sources table with 5 entries"
+
+  # The advisor agent has domain-specific features (multi-resource table format,
+  # scoping flow, per-persona analysis) not covered by the advisor-agent spec.
+  - spec: advisor-agent
+    file: .github/agents/azure-rbac-advisor.agent.md
+    reason: "RBAC-specific features: 8-section resource structure, multi-resource tables, landing zone scoping"
