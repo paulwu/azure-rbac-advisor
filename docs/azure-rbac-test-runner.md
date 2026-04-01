@@ -114,5 +114,5 @@ The Test Runner compares Actual Output against Expected Output using:
 ## Constraints
 
 - Test runs do **not** log to `log/` or save to `answer/` — they are kept separate from normal Advisor interactions
-- The agent does **not** answer general RBAC questions — use the [Azure RBAC Advisor](./azure-rbac-advisor.md) for that
+- The agent does **not** answer general RBAC questions — use the [AzRBAC Researcher](./azrbac-researcher.md) for that
 - The agent does **not** modify any files in `test/` or `resources/`

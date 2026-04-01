@@ -1,4 +1,4 @@
-# Azure RBAC Advisor Agent
+# AzRBAC Researcher Agent
 
 A **GitHub Copilot custom agent** for generating least-privilege roles for specified workloads organized by Azure Landing Zone archetype. The project also serves as a repository for RBAC roles for common Azure resources.
 
@@ -42,13 +42,13 @@ Every resource file documents the least-privileged built-in role needed for **Cr
 │   └── ai-landing-zone/                 # 11 resources (AI/ML services)
 ├── .github/
 │   ├── agents/
-│   │   ├── azure-rbac-advisor.agent.md          # RBAC Advisor agent (query mode)
-│   │   ├── azure-rbac-knowledge-author.agent.md # Knowledge Author agent (author + validate)
+│   │   ├── azrbac-researcher.agent.md          # AzRBAC Researcher (query mode)
+│   │   ├── azrbac-curator.agent.md             # AzRBAC Curator (author + validate)
 │   │   └── azure-rbac-test-runner.agent.md      # Test Runner agent (test use cases)
 │   └── copilot-instructions.md          # Authoring rules for all contributions
 ├── docs/
-│   ├── azure-rbac-advisor.md            # Advisor user guide
-│   ├── azure-rbac-knowledge-author.md   # Knowledge Author user guide
+│   ├── azrbac-researcher.md            # AzRBAC Researcher user guide
+│   ├── azrbac-curator.md               # AzRBAC Curator user guide
 │   └── azure-rbac-test-runner.md        # Test Runner user guide
 ├── test/
 │   ├── use-case-01.md                   # CI/CD pipeline pushing images to ACR
@@ -75,8 +75,8 @@ This repository includes three Copilot custom agents:
 
 | Agent | Purpose | User Guide |
 |---|---|---|
-| **Azure RBAC Advisor** | Answers RBAC least-privilege questions grounded on the `resources/` library. Read-only — logs prompts and saves answers automatically. | [docs/azure-rbac-advisor.md](docs/azure-rbac-advisor.md) |
-| **Azure RBAC Knowledge Author** | Creates new resource RBAC reference files and validates existing ones. Writes to `resources/`. | [docs/azure-rbac-knowledge-author.md](docs/azure-rbac-knowledge-author.md) |
+| **AzRBAC Researcher** | Answers RBAC least-privilege questions grounded on the `resources/` library. Read-only — logs prompts and saves answers automatically. | [docs/azrbac-researcher.md](docs/azrbac-researcher.md) |
+| **AzRBAC Curator** | Creates new resource RBAC reference files and validates existing ones. Writes to `resources/`. | [docs/azrbac-curator.md](docs/azrbac-curator.md) |
 | **Azure RBAC Test Runner** | Runs test use cases against the `resources/` library and scores output against expected results. | [docs/azure-rbac-test-runner.md](docs/azure-rbac-test-runner.md) |
 
 To activate any agent, launch the Copilot CLI (`copilot`) or open VS Code Copilot Chat, then select the agent from the `/agent` list. See each agent's user guide for detailed instructions and sample prompts.
@@ -122,7 +122,7 @@ All RBAC role information in this library is drawn from official Microsoft docum
 
 ## First-Time Setup
 
-After cloning this repository, run the setup command to create the `log/` and `answer/` runtime directories used by the Azure RBAC Advisor agent:
+After cloning this repository, run the setup command to create the `log/` and `answer/` runtime directories used by the AzRBAC Researcher agent:
 
 ```bash
 make setup
@@ -145,8 +145,9 @@ This project uses [**spec-driven development**](docs/spec-driven-development.md)
 | `readme-structure` | structural | README layout with TOC, agent table, and folder tree |
 | `response-capture` | structural | Answer file naming, structure, and timezone conventions |
 | `research-agent` | structural | Azure RBAC Researcher agent workflow |
-| `author-agent` | structural | Azure RBAC Knowledge Author agent workflow |
-| `advisor-agent` | structural | Azure RBAC Advisor agent workflow |
+| `author-agent` | structural | AzRBAC Curator agent workflow |
+| `advisor-agent` | structural | AzRBAC Researcher agent workflow |
+| `test-runner-agent` | structural | Azure RBAC Test Runner agent workflow |
 
 To check for drift against the specs: `@spec-drift`
 To re-import or upgrade specs: `@spec-importer`
@@ -159,7 +160,7 @@ See [docs/spec-driven-development.md](docs/spec-driven-development.md) for full 
 
 When adding or modifying resource files, follow the authoring rules in [`.github/copilot-instructions.md`](.github/copilot-instructions.md). Every file must follow the mandatory 7-section structure with consistent RBAC table formatting and source citations.
 
-The recommended workflow for adding new resources is to use the **Azure RBAC Knowledge Author** agent, which automates file generation, role verification, cross-reference updates, and self-validation. To add a resource manually, ensure you:
+The recommended workflow for adding new resources is to use the **AzRBAC Curator** agent, which automates file generation, role verification, cross-reference updates, and self-validation. To add a resource manually, ensure you:
 
 1. Place the file in the correct landing zone directory
 2. Follow the 7-section structure (Resource Metadata, Overview, Least-Privilege RBAC Reference with 🟢🟡🔴⚙️, Runtime Dependencies, Notes / Considerations, Related Resources)

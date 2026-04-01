@@ -1,6 +1,6 @@
-# Azure RBAC Advisor — User Guide
+# AzRBAC Researcher — User Guide
 
-The **Azure RBAC Advisor** is a GitHub Copilot custom agent defined in `.github/agents/azure-rbac-advisor.agent.md`. It answers RBAC questions grounded exclusively on the `resources/` library — it will not invent role names or recommend `Owner`/`Contributor` where a narrower role exists.
+The **AzRBAC Researcher** is a GitHub Copilot custom agent defined in `.github/agents/azrbac-researcher.agent.md`. It answers RBAC questions grounded exclusively on the `resources/` library — it will not invent role names or recommend `Owner`/`Contributor` where a narrower role exists.
 
 ---
 
@@ -32,7 +32,7 @@ The **Azure RBAC Advisor** is a GitHub Copilot custom agent defined in `.github/
    ```
    /agent
    ```
-   Browse the list and select **Azure RBAC Advisor**.
+   Browse the list and select **AzRBAC Researcher**.
 
 4. **Ask your question.** The agent reads the `resources/` library, answers with exact role names, logs your prompt to `log/`, and saves the answer to `answer/` automatically.
 
@@ -46,19 +46,19 @@ The **Azure RBAC Advisor** is a GitHub Copilot custom agent defined in `.github/
 
 1. Open GitHub Copilot Chat (`Ctrl+Alt+I` / `Cmd+Alt+I`)
 2. Click the agents dropdown (the `@` or Copilot icon at the bottom of the chat)
-3. Select **Azure RBAC Advisor**
+3. Select **AzRBAC Researcher**
 4. Ask your question
 
 ### GitHub.com Copilot
 
 1. Go to [github.com/copilot/agents](https://github.com/copilot/agents)
-2. Select this repository and choose **Azure RBAC Advisor** from the agent list
+2. Select this repository and choose **AzRBAC Researcher** from the agent list
 
 ---
 
 ## Recommended Model
 
-For best results, select **Claude Opus 4.6 (1M context)(Internal only)** when running the Azure RBAC Advisor. Its large context window allows the agent to load the full `resources/` library in a single pass, ensuring role recommendations are grounded across all 71 resource files simultaneously — particularly important for complex cross-resource prompts covering many services at once (e.g., a full Agentic AI Workload with 16 resources).
+For best results, select **Claude Opus 4.6 (1M context)(Internal only)** when running the AzRBAC Researcher. Its large context window allows the agent to load the full `resources/` library in a single pass, ensuring role recommendations are grounded across all 71 resource files simultaneously — particularly important for complex cross-resource prompts covering many services at once (e.g., a full Agentic AI Workload with 16 resources).
 
 **To select the model in the GitHub Copilot CLI:**
 

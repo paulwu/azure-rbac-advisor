@@ -1,6 +1,6 @@
-# Azure RBAC Knowledge Author — User Guide
+# AzRBAC Curator — User Guide
 
-The **Azure RBAC Knowledge Author** is a Copilot custom agent defined in `.github/agents/azure-rbac-knowledge-author.agent.md`. It creates new resource RBAC reference files and validates existing ones in `resources/`. Unlike the Advisor (which is read-only), the Knowledge Author writes to and modifies files in `resources/`.
+The **AzRBAC Curator** is a Copilot custom agent defined in `.github/agents/azrbac-curator.agent.md`. It creates new resource RBAC reference files and validates existing ones in `resources/`. Unlike the Advisor (which is read-only), the Knowledge Author writes to and modifies files in `resources/`.
 
 ---
 
@@ -43,14 +43,14 @@ Validate a single file, an entire landing zone, or the full library.
    ```
    /agent
    ```
-   Browse the list and select **Azure RBAC Knowledge Author**.
+   Browse the list and select **AzRBAC Curator**.
 
 3. Tell the agent what to do (author a new resource or validate existing files).
 
 ### VS Code Copilot Chat
 
 1. Open GitHub Copilot Chat (`Ctrl+Alt+I` / `Cmd+Alt+I`)
-2. Click the agents dropdown and select **Azure RBAC Knowledge Author**
+2. Click the agents dropdown and select **AzRBAC Curator**
 3. Send your prompt
 
 ---
