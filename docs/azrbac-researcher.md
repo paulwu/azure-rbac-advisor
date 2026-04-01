@@ -1,6 +1,6 @@
 # AzRBAC Researcher — User Guide
 
-The **AzRBAC Researcher** is a GitHub Copilot custom agent defined in `.github/agents/azrbac-researcher.agent.md`. It answers RBAC questions grounded exclusively on the `resources/` library — it will not invent role names or recommend `Owner`/`Contributor` where a narrower role exists.
+The **AzRBAC Researcher** is a GitHub Copilot custom agent defined in `.github/agents/azrbac-researcher.agent.md`. It answers RBAC questions grounded exclusively on the `grounding/` library — it will not invent role names or recommend `Owner`/`Contributor` where a narrower role exists.
 
 ---
 
@@ -34,7 +34,7 @@ The **AzRBAC Researcher** is a GitHub Copilot custom agent defined in `.github/a
    ```
    Browse the list and select **AzRBAC Researcher**.
 
-4. **Ask your question.** The agent reads the `resources/` library, answers with exact role names, logs your prompt to `log/`, and saves the answer to `answer/` automatically.
+4. **Ask your question.** The agent reads the `grounding/` library, answers with exact role names, logs your prompt to `log/`, and saves the answer to `answers/` automatically.
 
 5. **Switch modes** (optional) — press `Shift+Tab` to cycle to **Autopilot** mode for longer multi-step RBAC analysis without manual confirmation at each step.
 
@@ -58,7 +58,7 @@ The **AzRBAC Researcher** is a GitHub Copilot custom agent defined in `.github/a
 
 ## Recommended Model
 
-For best results, select **Claude Opus 4.6 (1M context)(Internal only)** when running the AzRBAC Researcher. Its large context window allows the agent to load the full `resources/` library in a single pass, ensuring role recommendations are grounded across all 71 resource files simultaneously — particularly important for complex cross-resource prompts covering many services at once (e.g., a full Agentic AI Workload with 16 resources).
+For best results, select **Claude Opus 4.6 (1M context)(Internal only)** when running the AzRBAC Researcher. Its large context window allows the agent to load the full `grounding/` library in a single pass, ensuring role recommendations are grounded across all 71 resource files simultaneously — particularly important for complex cross-resource prompts covering many services at once (e.g., a full Agentic AI Workload with 16 resources).
 
 **To select the model in the GitHub Copilot CLI:**
 
@@ -167,7 +167,7 @@ For each principal, list:
 Save the full output to rbac-workload-deployment.md
 ```
 
-This produces a structured RBAC assignment matrix saved to `rbac-workload-deployment.md`, with sources cited for each role from the `resources/workload-landing-zone/` reference files. The prompt is also automatically logged to `log/` and the answer saved to `answer/`.
+This produces a structured RBAC assignment matrix saved to `rbac-workload-deployment.md`, with sources cited for each role from the `grounding/workload-landing-zone/` reference files. The prompt is also automatically logged to `log/` and the answer saved to `answers/`.
 
 ---
 

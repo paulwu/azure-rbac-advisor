@@ -38,7 +38,7 @@ variables:
   RESEARCH_CURATOR_NAME: "Knowledge Author"
 
   # --- response-capture ---
-  RESPONSE_FOLDER: "answer"
+  RESPONSE_FOLDER: "answers"
   RESPONSE_TIMEZONE: "America/Los_Angeles"
   RESPONSE_FILENAME_PREFIX: "answer"
 
@@ -54,10 +54,10 @@ variables:
 
   # --- advisor-agent ---
   ADVISOR_AGENT_NAME: "AzRBAC Researcher"
-  ADVISOR_AGENT_DESCRIPTION: "Answers Azure RBAC least-privilege questions grounded on the resources/ reference library."
-  KNOWLEDGE_BASE_FOLDER: "resources"
+  ADVISOR_AGENT_DESCRIPTION: "Answers Azure RBAC least-privilege questions grounded on the grounding/ reference library."
+  KNOWLEDGE_BASE_FOLDER: "grounding"
   ADVISOR_SCOPE: "Azure RBAC least-privilege permissions"
-  ANSWER_FOLDER: "answer"
+  ANSWER_FOLDER: "answers"
   LOG_FOLDER: "log"
   CORRECTIONS_FILE: ".advisor-rules/corrections.md"
 
@@ -66,7 +66,7 @@ variables:
 
   # --- test-runner-agent ---
   TEST_RUNNER_AGENT_NAME: "Azure RBAC Test Runner"
-  TEST_RUNNER_AGENT_DESCRIPTION: "Runs test use cases against the resources/ reference library and scores output against expected results."
+  TEST_RUNNER_AGENT_DESCRIPTION: "Runs test use cases against the grounding/ reference library and scores output against expected results."
   TEST_FOLDER: "test"
   TEST_FILE_PATTERN: "use-case-*.md"
 

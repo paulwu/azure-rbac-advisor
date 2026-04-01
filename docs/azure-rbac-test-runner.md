@@ -1,8 +1,8 @@
 # Azure RBAC Test Runner — User Guide
 
-The **Azure RBAC Test Runner** is a dedicated Copilot custom agent defined in `.github/agents/azure-rbac-test-runner.agent.md`. It validates the quality of RBAC role recommendations by executing test use case prompts against the `resources/` reference library and scoring the output against expected results.
+The **Azure RBAC Test Runner** is a dedicated Copilot custom agent defined in `.github/agents/azure-rbac-test-runner.agent.md`. It validates the quality of RBAC role recommendations by executing test use case prompts against the `grounding/` reference library and scoring the output against expected results.
 
-The Test Runner operates independently from the Advisor — it uses the same `resources/` grounding rules but runs in its own context, providing separation between the system under test and the test runner.
+The Test Runner operates independently from the Advisor — it uses the same `grounding/` grounding rules but runs in its own context, providing separation between the system under test and the test runner.
 
 ---
 
@@ -44,7 +44,7 @@ run-test @test/use-case-01.md
 
 The agent will:
 1. Read the use case file and extract the prompt from `Section 1`
-2. Execute the prompt as an RBAC query against the `resources/` library
+2. Execute the prompt as an RBAC query against the `grounding/` library
 3. Compare its output against the expected output in `Section 2`
 4. Score the match (roles matched + key terms matched) and report a result:
    - **≥ 80%** → `✅ PASS`
@@ -113,6 +113,6 @@ The Test Runner compares Actual Output against Expected Output using:
 
 ## Constraints
 
-- Test runs do **not** log to `log/` or save to `answer/` — they are kept separate from normal Advisor interactions
+- Test runs do **not** log to `log/` or save to `answers/` — they are kept separate from normal Advisor interactions
 - The agent does **not** answer general RBAC questions — use the [AzRBAC Researcher](./azrbac-researcher.md) for that
-- The agent does **not** modify any files in `test/` or `resources/`
+- The agent does **not** modify any files in `test/` or `grounding/`

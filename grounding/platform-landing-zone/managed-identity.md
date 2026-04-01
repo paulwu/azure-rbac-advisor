@@ -8,7 +8,7 @@
 | **Resource Type** | `Microsoft.ManagedIdentity/userAssignedIdentities` |
 | **Azure Portal Category** | Identity > Managed Identities |
 | **Landing Zone Context** | Platform Landing Zone |
-| **Documentation** | [Microsoft Docs](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview) |
+| **Documentation** | [Microsoft Docs](https://learn.microsoft.com/entra/identity/managed-identities-azure-grounding/overview) |
 | **Pricing** | No additional cost (free) |
 | **SLA** | N/A (backed by Microsoft Entra ID SLA) |
 
@@ -74,7 +74,7 @@ Azure Managed Identities provide an automatically managed identity in Microsoft 
 
 | Dependency | Resource Type | Purpose | Required / Optional |
 |---|---|---|---|
-| [Microsoft Entra ID](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview) | N/A (platform service) | Issues and manages the Entra ID service principal backing every managed identity; all token issuance and authentication flows go through Entra ID at runtime. | Required |
+| [Microsoft Entra ID](https://learn.microsoft.com/entra/identity/managed-identities-azure-grounding/overview) | N/A (platform service) | Issues and manages the Entra ID service principal backing every managed identity; all token issuance and authentication flows go through Entra ID at runtime. | Required |
 
 ## Notes / Considerations
 

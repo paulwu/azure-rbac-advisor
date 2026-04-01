@@ -13,7 +13,7 @@ variables:
   - name: TEST_RUNNER_AGENT_DESCRIPTION
     description: "One-line description of the test runner agent"
     required: true
-    example: "Runs test use cases against the resources/ reference library and scores output against expected results."
+    example: "Runs test use cases against the grounding/ reference library and scores output against expected results."
   - name: KNOWLEDGE_BASE_FOLDER
     description: "Folder containing the reference knowledge base files"
     required: true

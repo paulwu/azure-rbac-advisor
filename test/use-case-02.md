@@ -185,17 +185,17 @@ All services in this Agentic AI workload should be deployed with **public networ
 ---
 
 > 📄 Sources:
-> - `resources/ai-landing-zone/azure-ai-foundry.md`
-> - `resources/ai-landing-zone/foundry-iq.md`
-> - `resources/ai-landing-zone/azure-openai.md`
-> - `resources/ai-landing-zone/azure-ai-search.md`
-> - `resources/ai-landing-zone/azure-ai-services.md`
-> - `resources/ai-landing-zone/azure-ai-document-intelligence.md`
-> - `resources/data-landing-zone/azure-cosmos-db.md`
-> - `resources/workload-landing-zone/azure-storage-account.md`
-> - `resources/workload-landing-zone/azure-key-vault.md`
-> - `resources/platform-landing-zone/azure-key-vault.md`
-> - `resources/platform-landing-zone/azure-monitor.md`
-> - `resources/platform-landing-zone/log-analytics-workspace.md`
-> - `resources/workload-landing-zone/spoke-virtual-network.md`
-> - `resources/platform-landing-zone/private-dns-zones.md`
+> - `grounding/ai-landing-zone/azure-ai-foundry.md`
+> - `grounding/ai-landing-zone/foundry-iq.md`
+> - `grounding/ai-landing-zone/azure-openai.md`
+> - `grounding/ai-landing-zone/azure-ai-search.md`
+> - `grounding/ai-landing-zone/azure-ai-services.md`
+> - `grounding/ai-landing-zone/azure-ai-document-intelligence.md`
+> - `grounding/data-landing-zone/azure-cosmos-db.md`
+> - `grounding/workload-landing-zone/azure-storage-account.md`
+> - `grounding/workload-landing-zone/azure-key-vault.md`
+> - `grounding/platform-landing-zone/azure-key-vault.md`
+> - `grounding/platform-landing-zone/azure-monitor.md`
+> - `grounding/platform-landing-zone/log-analytics-workspace.md`
+> - `grounding/workload-landing-zone/spoke-virtual-network.md`
+> - `grounding/platform-landing-zone/private-dns-zones.md`

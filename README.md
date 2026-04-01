@@ -34,7 +34,7 @@ Every resource file documents the least-privileged built-in role needed for **Cr
 
 ```
 .
-├── resources/
+├── grounding/
 │   ├── README.md                        # Library overview and RBAC principles
 │   ├── platform-landing-zone/           # 23 resources (shared services, governance)
 │   ├── workload-landing-zone/           # 23 resources (application workloads)
@@ -75,9 +75,9 @@ This repository includes three Copilot custom agents:
 
 | Agent | Purpose | User Guide |
 |---|---|---|
-| **AzRBAC Researcher** | Answers RBAC least-privilege questions grounded on the `resources/` library. Read-only — logs prompts and saves answers automatically. | [docs/azrbac-researcher.md](docs/azrbac-researcher.md) |
-| **AzRBAC Curator** | Creates new resource RBAC reference files and validates existing ones. Writes to `resources/`. | [docs/azrbac-curator.md](docs/azrbac-curator.md) |
-| **Azure RBAC Test Runner** | Runs test use cases against the `resources/` library and scores output against expected results. | [docs/azure-rbac-test-runner.md](docs/azure-rbac-test-runner.md) |
+| **AzRBAC Researcher** | Answers RBAC least-privilege questions grounded on the `grounding/` library. Read-only — logs prompts and saves answers automatically. | [docs/azrbac-researcher.md](docs/azrbac-researcher.md) |
+| **AzRBAC Curator** | Creates new resource RBAC reference files and validates existing ones. Writes to `grounding/`. | [docs/azrbac-curator.md](docs/azrbac-curator.md) |
+| **Azure RBAC Test Runner** | Runs test use cases against the `grounding/` library and scores output against expected results. | [docs/azure-rbac-test-runner.md](docs/azure-rbac-test-runner.md) |
 
 To activate any agent, launch the Copilot CLI (`copilot`) or open VS Code Copilot Chat, then select the agent from the `/agent` list. See each agent's user guide for detailed instructions and sample prompts.
 
@@ -122,13 +122,13 @@ All RBAC role information in this library is drawn from official Microsoft docum
 
 ## First-Time Setup
 
-After cloning this repository, run the setup command to create the `log/` and `answer/` runtime directories used by the AzRBAC Researcher agent:
+After cloning this repository, run the setup command to create the `log/` and `answers/` runtime directories used by the AzRBAC Researcher agent:
 
 ```bash
 make setup
 ```
 
-`log/` is gitignored. `answer/` is tracked in git (answer files are committed so output quality can be compared over time). Both directories must exist locally for the Advisor agent to write prompt logs and answer files.
+`log/` is gitignored. `answers/` is tracked in git (answer files are committed so output quality can be compared over time). Both directories must exist locally for the Advisor agent to write prompt logs and answer files.
 
 ---
 

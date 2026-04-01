@@ -63,7 +63,7 @@ When two notes disagree with each other (not with the primary source):
 
 After composing every response, save to a markdown file:
 
-**File naming:** `response-YY-MM-DD-HH-MM-SS.md` in `America/Los_Angeles` timezone, saved to `answer/`
+**File naming:** `response-YY-MM-DD-HH-MM-SS.md` in `America/Los_Angeles` timezone, saved to `answers/`
 
 **File structure:**
 

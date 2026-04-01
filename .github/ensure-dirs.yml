@@ -7,7 +7,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'log/**'
-      - 'answer/**'
+      - 'answers/**'
 
 jobs:
   ensure-dirs:
@@ -17,19 +17,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Ensure log/ and answer/ directories exist
+      - name: Ensure log/ and answers/ directories exist
         run: |
-          mkdir -p log answer
-          touch log/.gitkeep answer/.gitkeep
+          mkdir -p log answers
+          touch log/.gitkeep answers/.gitkeep
 
       - name: Commit if directories were missing
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add log/.gitkeep answer/.gitkeep
+          git add log/.gitkeep answers/.gitkeep
           if git diff --cached --quiet; then
             echo "Nothing to commit — directories already present."
           else
-            git commit -m "chore: ensure log/ and answer/ runtime directories exist [skip ci]"
+            git commit -m "chore: ensure log/ and answers/ runtime directories exist [skip ci]"
             git push
           fi

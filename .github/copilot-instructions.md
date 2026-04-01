@@ -1,13 +1,13 @@
 # GitHub Copilot Instructions — Azure Landing Zone RBAC Reference
 
-These instructions govern how GitHub Copilot should create, modify, and extend files in the `resources/` directory of this repository.
+These instructions govern how GitHub Copilot should create, modify, and extend files in the `grounding/` directory of this repository.
 
 ---
 
 ## Quick Reference
 
 ```bash
-# First-time setup — create log/ and answer/ runtime directories
+# First-time setup — create log/ and answers/ runtime directories
 make setup
 
 # Run a single test (via the Azure RBAC Test Runner agent)
@@ -23,13 +23,13 @@ There are no build or lint steps — this is a documentation-only repository. Th
 
 ## Setup
 
-After cloning, create the `log/` and `answer/` runtime directories required by the AzRBAC Researcher agent:
+After cloning, create the `log/` and `answers/` runtime directories required by the AzRBAC Researcher agent:
 
 ```bash
 make setup
 ```
 
-`log/` is gitignored. `answer/` is tracked in git (answer files are committed so output quality can be compared over time). Both directories must exist locally for the agent to write files.
+`log/` is gitignored. `answers/` is tracked in git (answer files are committed so output quality can be compared over time). Both directories must exist locally for the agent to write files.
 
 A GitHub Actions workflow (`.github/ensure-dirs.yml`) also ensures these directories exist on every push to `main`, so they are automatically created if missing after a fresh clone on CI.
 
@@ -70,7 +70,7 @@ All RBAC role names, permission actions, and role descriptions **must** be drawn
 ## Directory Structure
 
 ```
-resources/
+grounding/
 ├── README.md                          ← Overview and general principles
 ├── platform-landing-zone/             ← Shared connectivity, governance, management (Platform team)
 ├── workload-landing-zone/             ← Application infrastructure (App/Dev team)
@@ -286,7 +286,7 @@ Use relative paths. Cross-landing-zone links must use `../landing-zone-dir/file.
 3. Follow the mandatory file structure above in full — all 8 sections required.
 4. Verify every role name against the [Azure built-in roles reference](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles) before including it.
 5. Add a `Related Resources` entry in any existing files that logically connect to the new resource.
-6. Update `resources/README.md` if a new landing zone directory is created.
+6. Update `grounding/README.md` if a new landing zone directory is created.
 
 ---
 
@@ -306,15 +306,15 @@ Three Copilot custom agents are defined in `.github/agents/`:
 
 ### AzRBAC Researcher (`azrbac-researcher.agent.md`)
 
-**Purpose:** Answers Azure RBAC questions using the `resources/` library as its knowledge base.
+**Purpose:** Answers Azure RBAC questions using the `grounding/` library as its knowledge base.
 
 Key constraints:
 
-- **Read `resources/` files; never modify them.** The agent reads resource files as a reference library — it must not write to or edit any file under `resources/`.
-- **Write output only to `log/` and `answer/`.** `log/` is gitignored; `answer/` is tracked in git. These directories may not exist after a fresh clone; run `make setup` to create them.
+- **Read `grounding/` files; never modify them.** The agent reads resource files as a reference library — it must not write to or edit any file under `grounding/`.
+- **Write output only to `log/` and `answers/`.** `log/` is gitignored; `answers/` is tracked in git. These directories may not exist after a fresh clone; run `make setup` to create them.
 - **Never invent role names.** The agent cites roles verbatim from resource files; Copilot authoring assistance must do the same.
 
-When a user invokes the agent (via `/agent` in the CLI or the agent dropdown in VS Code Copilot Chat), it logs every prompt to `log/copilot-log_YYYY-MM-DD_HH-MM-SS PST.md` and saves answers to `answer/answer_YYYY-MM-DD_HH-MM-SS PST.md`. If these directories are missing, the agent will fail to write — create them with the setup command above.
+When a user invokes the agent (via `/agent` in the CLI or the agent dropdown in VS Code Copilot Chat), it logs every prompt to `log/copilot-log_YYYY-MM-DD_HH-MM-SS PST.md` and saves answers to `answers/answer_YYYY-MM-DD_HH-MM-SS PST.md`. If these directories are missing, the agent will fail to write — create them with the setup command above.
 
 ### AzRBAC Curator (`azrbac-curator.agent.md`)
 
@@ -327,15 +327,15 @@ Two modes of operation:
 
 Key constraints:
 
-- **Writes to `resources/` only** — the author agent creates and edits resource files.
+- **Writes to `grounding/` only** — the author agent creates and edits resource files.
 - **Never skips role verification** — every role name is checked via web fetch before inclusion.
 - **Self-validates** after authoring — runs the full validation pass on its own output before confirming done.
 
 ### Azure RBAC Test Runner (`azure-rbac-test-runner.agent.md`)
 
-**Purpose:** Runs test use cases against the `resources/` library and scores output against expected results.
+**Purpose:** Runs test use cases against the `grounding/` library and scores output against expected results.
 
-The Test Runner is a dedicated agent that validates RBAC answer quality independently from the Advisor. It uses the same `resources/` grounding rules but operates in its own context — separating the system under test from the test runner.
+The Test Runner is a dedicated agent that validates RBAC answer quality independently from the Advisor. It uses the same `grounding/` grounding rules but operates in its own context — separating the system under test from the test runner.
 
 Two commands:
 
@@ -344,8 +344,8 @@ Two commands:
 
 Key constraints:
 
-- **Read-only access to `resources/` and `test/`** — never modifies reference or test files.
-- **No logging** — test runs do not write to `log/` or `answer/`.
+- **Read-only access to `grounding/` and `test/`** — never modifies reference or test files.
+- **No logging** — test runs do not write to `log/` or `answers/`.
 - **Does not answer general RBAC questions** — redirects users to the Advisor agent.
 
 ---
@@ -357,7 +357,7 @@ The `test/` folder contains reference use cases for validating the AzRBAC Resear
 - **Section 1 — Prompt**: The exact prompt to send to the agent.
 - **Section 2 — Expected Output**: The reference answer to compare against.
 
-To run tests, select the **Azure RBAC Test Runner** agent and send `run-test @test/use-case-01.md` for a single test, or `run-all-tests` to batch-run all use cases. The Test Runner generates answers independently using the same `resources/` grounding rules as the Advisor, scores them against expected output, and reports pass/partial/fail results. Test runs are not logged to `log/` or `answer/`.
+To run tests, select the **Azure RBAC Test Runner** agent and send `run-test @test/use-case-01.md` for a single test, or `run-all-tests` to batch-run all use cases. The Test Runner generates answers independently using the same `grounding/` grounding rules as the Advisor, scores them against expected output, and reports pass/partial/fail results. Test runs are not logged to `log/` or `answers/`.
 
 When adding new resource files, consider adding a test use case in `test/` if the resource has non-obvious RBAC patterns (e.g., dual management/data plane roles, sub-resource breakdowns).
 
@@ -367,8 +367,8 @@ When adding new resource files, consider adding a test use case in `test/` if th
 
 `azure-key-vault.md` intentionally exists in **two** landing zone directories:
 
-- `resources/platform-landing-zone/azure-key-vault.md` — Key Vault owned by the platform team (shared secrets, certificates, CMKs for platform services)
-- `resources/workload-landing-zone/azure-key-vault.md` — Key Vault owned by an application team (app secrets and certificates)
+- `grounding/platform-landing-zone/azure-key-vault.md` — Key Vault owned by the platform team (shared secrets, certificates, CMKs for platform services)
+- `grounding/workload-landing-zone/azure-key-vault.md` — Key Vault owned by an application team (app secrets and certificates)
 
 When adding a `Related Resources` link to Key Vault, link to the file in the **same landing zone** as the resource being authored. Cross-zone links to Key Vault must use the `../` relative path prefix.
 

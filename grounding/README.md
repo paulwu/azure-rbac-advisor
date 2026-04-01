@@ -5,7 +5,7 @@ This directory contains per-resource RBAC reference cards for the four Azure Lan
 ## Structure
 
 ```
-resources/
+grounding/
 ├── platform-landing-zone/    # Core platform services (managed by Platform/Cloud team)
 ├── workload-landing-zone/    # Application workload services (managed by App teams)
 ├── data-landing-zone/        # Data platform services (managed by Data/Analytics teams)

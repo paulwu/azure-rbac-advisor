@@ -21,4 +21,4 @@ The least-privileged role for a CI/CD pipeline Service Principal to push contain
 - Do not use `Contributor` for image push operations — `AcrPush` is the purpose-built data-plane role.
 - Disable the ACR admin account (`adminUserEnabled: false`) and use Entra ID role-based access (`AcrPush`) for all pipeline identities.
 
-> 📄 Source: `resources/workload-landing-zone/azure-container-registry.md`
+> 📄 Source: `grounding/workload-landing-zone/azure-container-registry.md`

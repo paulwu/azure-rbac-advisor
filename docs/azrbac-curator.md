@@ -1,6 +1,6 @@
 # AzRBAC Curator — User Guide
 
-The **AzRBAC Curator** is a Copilot custom agent defined in `.github/agents/azrbac-curator.agent.md`. It creates new resource RBAC reference files and validates existing ones in `resources/`. Unlike the Advisor (which is read-only), the Knowledge Author writes to and modifies files in `resources/`.
+The **AzRBAC Curator** is a Copilot custom agent defined in `.github/agents/azrbac-curator.agent.md`. It creates new resource RBAC reference files and validates existing ones in `grounding/`. Unlike the Advisor (which is read-only), the Knowledge Author writes to and modifies files in `grounding/`.
 
 ---
 
