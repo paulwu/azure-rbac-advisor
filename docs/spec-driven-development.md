@@ -30,4 +30,4 @@ Specs use mustache-style placeholders: `{{VARIABLE_NAME}}`. Values are stored in
 
 For the complete spec format reference, FAQ, and available specs, see the spec repository:
 
-👉 **[paulwu/curated-advisor-specs — Full Documentation](https://github.com/paulwu/curated-advisor-specs/tree/main/docs/spec-driven-development)**
+👉 **[paulwu/arbitrated-grounding-specs — Full Documentation](https://github.com/paulwu/arbitrated-grounding-specs/tree/main/docs/spec-driven-development)**
