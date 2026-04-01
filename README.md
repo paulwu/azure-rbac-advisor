@@ -12,6 +12,7 @@ A **GitHub Copilot custom agent** for generating least-privilege roles for speci
 - [Test Use Cases](#test-use-cases)
 - [Authoritative Sources](#authoritative-sources)
 - [First-Time Setup](#first-time-setup)
+- [Spec-Driven Development](#spec-driven-development)
 - [Contributing](#contributing)
 
 ---
@@ -123,6 +124,29 @@ make setup
 ```
 
 `log/` is gitignored. `answer/` is tracked in git (answer files are committed so output quality can be compared over time). Both directories must exist locally for the Advisor agent to write prompt logs and answer files.
+
+---
+
+## Spec-Driven Development
+
+This project uses [**spec-driven development**](docs/spec-driven-development.md) — agent behavior patterns are imported from a shared spec repository and applied with project-specific variable values.
+
+**Spec repo:** [paulwu/arbitrated-grounding-specs](https://github.com/paulwu/arbitrated-grounding-specs)
+
+| Spec | Drift Mode | What It Governs |
+|---|---|---|
+| `grounding-rules` | behavioral | Source hierarchy and contradiction detection in `copilot-instructions.md` |
+| `research-conventions` | structural | YAML frontmatter, priority scale, and research note rules |
+| `readme-structure` | structural | README layout with TOC, agent table, and folder tree |
+| `response-capture` | structural | Answer file naming, structure, and timezone conventions |
+| `research-agent` | structural | Azure RBAC Researcher agent workflow |
+| `author-agent` | structural | Azure RBAC Knowledge Author agent workflow |
+| `advisor-agent` | structural | Azure RBAC Advisor agent workflow |
+
+To check for drift against the specs: `@spec-drift`
+To re-import or upgrade specs: `@spec-importer`
+
+See [docs/spec-driven-development.md](docs/spec-driven-development.md) for full details on how the spec system works.
 
 ---
 
