@@ -29,6 +29,9 @@ Every resource file documents the least-privileged built-in role needed for **Cr
 
 ## Repository Structure
 
+<details>
+<summary>Folder tree and landing zone breakdown</summary>
+
 ```
 .
 ├── resources/
@@ -61,6 +64,8 @@ Every resource file documents the least-privileged built-in role needed for **Cr
 | **Workload** | 23 | Spoke Virtual Network, Network Security Groups, Virtual Machines, Virtual Machine Scale Sets, Azure Managed Disks, Azure Virtual Desktop, App Service, App Service Plan, Azure SQL Database, Azure Database for PostgreSQL, Azure Storage Account *(with Blob/File/Queue/Table breakdowns)*, Azure Cache for Redis, Azure Key Vault, Azure Load Balancer, Application Gateway, Azure Container Registry, Azure Kubernetes Service, Azure Container Apps, Azure Container Apps Environment, Azure Functions, Azure Logic Apps, Azure Managed Grafana, Azure SSH Key |
 | **Data** | 14 | Azure Data Factory, Azure Synapse Analytics, Azure Data Lake Storage Gen2, Azure Databricks, Azure Event Hubs, Azure Event Grid, Azure IoT Hub, Azure Cosmos DB, Azure Stream Analytics, Azure HDInsight, Azure Notification Hubs, Microsoft Purview, Microsoft Fabric, Azure Data Explorer |
 | **AI** | 11 | Azure Machine Learning, Azure OpenAI, Azure AI Services, Azure AI Search, Azure Bot Service, Azure Applied AI Services, Azure AI Foundry, Azure AI Document Intelligence, Azure AI Content Understanding, Grounding with Bing Search, Foundry IQ |
+
+</details>
 
 ---
 
